@@ -3,7 +3,7 @@ import { PrismaClient } from "@prisma/client";
 async function main() {
   const prisma = new PrismaClient();
 
-  const [r2] = await prisma.$queryRaw<{ id: number }[]>`SELECT id
+  const [r2] = await prisma.$queryRaw<{ id: number }[]>`SELECT idss
    FROM "User" LIMIT 1`;
   const r1 = await prisma.user.findFirst({ select: { id: true } });
 
