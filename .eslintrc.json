@@ -1,22 +1,27 @@
 {
-  "parser": "@typescript-eslint/parser",
-  "plugins": ["@typescript-eslint", "@ts-safeql/eslint-plugin"],
-  "parserOptions": {
-    "project": "./tsconfig.json"
-  },
-  "rules": {
-    "@ts-safeql/check-sql": [
-      "error",
-      {
-        "connections": [
-          {
-            "migrationsDir": "./prisma/migrations",
-            "targets": [
-              { "tag": "prisma.+($queryRaw|$executeRaw)", "transform": "{type}[]" }
-            ]
-          }
-        ]
-      }
-    ]
-  }
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": "standard-with-typescript",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["@typescript-eslint", "@ts-safeql/eslint-plugin"],
+    "rules": {
+        "@ts-safeql/check-sql": [
+            "error",
+            {
+              "connections": [
+                {
+                  "migrationsDir": "./prisma/migrations",
+                  "targets": [
+                    { "tag": "prisma.+($queryRaw|$executeRaw)", "transform": "{type}[]" }
+                  ]
+                }
+              ]
+            }
+          ]
+    }
 }
